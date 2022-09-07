@@ -27,7 +27,12 @@ void validDefect(defect *defect_arr, char *str){
 void invalidDefect(char *str){
 
 }
-void getDefect(char *file_loc){
+void *getDefect(void *file){
     defect * defect_arr[MAXDEFECT];
+
+    char *file_location = (char *)file;
+    printf("\n--- Got this file %s", file_location);
+
+    
 
 }
