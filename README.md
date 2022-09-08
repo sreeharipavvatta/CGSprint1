@@ -17,7 +17,7 @@
 
 ## Contributors:
 - [Aman Bhaskar](https://github.com/amanbh2)
-- [Karan](https://github.com/telarKaran)
-- [Krishna](https://github.com/Chaitu1018)
-- [Sreehari](https://github.com/sreeharipavvatta)
-- [Vamsee](https://github.com/ssvk053)
+- [Karan Nareshbhai Telar](https://github.com/telarKaran)
+- [Krishna Chaitanya Chekka](https://github.com/Chaitu1018)
+- [Sreehari  Ps](https://github.com/sreeharipavvatta)
+- [Singuluri Sai Vamsee Krishna](https://github.com/ssvk053)
