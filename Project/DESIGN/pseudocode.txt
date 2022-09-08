@@ -1,0 +1,203 @@
+// Clients of software development company report defects in software they purchased.
+// These defects are to be assigned to programmers depending on functional area they are handling.
+
+Input Files:
+1. Multiple files containing list of defects.
+{defectlist1.txt, defectlist2.txt, defectlist3.txt ...}
+2. Employee Database File
+{employees.txt}
+
+Source Codes:
+1. main.c
+2. getdefect.c
+3. assign.c
+
+Program Flow:
+Input Files -> main.c -> getdefect.c -> assign.c -> Output Files
+
+// Pseudocodes
+
+----- Inside main.c file -----
+Function main:
+    --START--
+    Take location of input files as Command Line arguments.
+    Validate Command Line Argumensts
+    If insufficient arguments are passed display proper usage
+
+    Create separate threads for each input file passed
+    Declare an array to strore all thread IDs
+    Display proper error in case thread is not created
+    Pass file location with the thread to getdefect function
+
+    Wait for all child threads to join
+    --END--
+
+----- Inside getdefect.c file -----
+Function getDefect:
+    --START--
+    Takes the location of file as input
+	Open the file with a file pointer	
+	if the pointer is NULL
+		print "cannot open file" and exit
+
+    read each line of the file
+	if the line returns NULL
+		return as we have reached the end of file
+	else
+		pass the content of the line to checkValidity function
+    
+    --END--
+
+Function checkValidity:
+    --START--
+    FUNCTION checkValidity: Takes defect_arr structure and Defect line as input
+
+    //Create two local variables  and intialize them 
+    CREATE count intialize it to 0
+    CREATE *s dynamically allocate the memory 
+    intialize s with Defect line
+
+    //Tokenize and dynamically allocate memory and store each variables 
+    CREATE token variable intialize it to STRTOK FUNCTION with s , :  
+    as parameters
+
+    INSIDE WHILE LOOP with condition token not equal to NULL
+         INCREMENT count
+          INSIDE SWITCH CASE LOOP with count as parameter
+            CASE when count equals to 1 then 
+            dynamically allocate memory for defectID and store token value 
+            and BREAK statement 
+
+            CASE  when count equals to 2 then 
+            dynamically allocate memory for description and store token value 
+            and BREAK statement 
+
+            CASE  when count equals to 3 then 
+            dynamically allocate memory for moduleName and store token value 
+            and BREAK statement 
+
+            CASE  when count equals to 4 then 
+            dynamically allocate memory for functionalArea and store token value 
+            and BREAK statement 
+
+            CASE  when count equals to 5 then 
+            dynamically allocate memory for data and store token value 
+            and BREAK statement
+
+            CASE  when count equals to 6 then 
+            dynamically allocate memory for status and store token value 
+            and BREAK statement  
+
+            CASE  when count equals to 7 then 
+            dynamically allocate memory for type and store token value 
+            and BREAK statement
+
+            default it is BREAK statement
+            END OF SWITCH CASE LOOP 
+        strtok is used again for next word with parameters NULL and :
+    
+    END OF WHILE LOOP
+
+    //To check Validity using count variable
+    IF count is equal to 7 
+        IF status is open 
+        call validDefect FUNCTION
+    ELSE
+        call invalidDefect FUNCTION
+
+    --END--
+
+Function InvalidDefect:
+    --START--
+    Takes Invalid Defect ID and Defect String/Line as Input
+		
+	// Display Defect ID and Unvalible Informations
+	PRINT "Unvalible Info of <Defect ID>"
+
+	// Append Invalid Entry to File "invaliddefect.txt"
+	IF file is not created
+		CREATE "invaliddefect.txt"
+		APPEND entire invalid defect line 
+	ELSE 
+		APPEND entire invalid defect line
+    
+    --END--
+
+----- Inside assign.c file -----
+Fucntion assignProgrammer:
+    --START--
+    Takes array of valid entries as an argument
+
+    Declare an data structure to store employee data
+    Create an array to store employee data.
+    Call function getEmployee and pass this array.
+
+    Checks for status of all elements inside array.
+    IF status is not open ignore it
+    IF status is open then call seachProgrammer Function,
+    pass array of employee structure and array of valid defect strucutre to it.
+
+    --END--
+
+Function getEmployee:
+    --START--
+    Takes array of employee structure as an argument
+    Open input file with employee data using File pointer
+    Display error if file can't be opened for any reason
+
+    Read all lines and tokenise it into employee information
+    Store these information in employee structure
+    Store all employee in the array
+    
+
+    --END--
+
+Function searchProgrammer:
+    --START--
+    Takes array of employee structure and array of valid defect entry structure as argument
+    maps programmer to the defect if there functional requrirement is matched
+    
+    If programmer is assigned, call changeStatus Function and displayAssignemt function
+    IF multiple programmer is found assign to first one.
+    After assigning change defect status to assigned.
+    
+    Call createEmployeeFIle Function, pass Employee and defect sturcuture.
+    
+    IF programmer is not found, call unsignedDefect Function, pass defect structure to it.
+
+
+
+    --END--
+
+Function changeStatus:
+    --START--
+
+
+    
+
+    --END--
+
+Function displayAssignemt:
+    --START--
+    Takes array of valid defects entry as argument
+    Checks for status = assigned.
+    Defects assigned to programmers to be displayed along with defect description, module name, functional area, filed-on date type, Emp ID and EMP Name.
+    
+
+    --END--
+
+Function unsignedDefect:
+    --START--
+    Takes defect structure as argument.
+    Appends information of defect into a file unassignedDefects.txt
+    IF file doesn't exist - create new file with same name
+    
+
+    --END--
+
+Function createEmployeeFile:
+    Takes structure of Employee and Defect 
+    If employee file is exists, append defect information that has been assigned 
+    in that file
+    Else
+    Create file with filename <empID>_assignemnts.txt and copy defect information.
