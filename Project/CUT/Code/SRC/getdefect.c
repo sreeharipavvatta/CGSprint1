@@ -64,9 +64,6 @@ int checkValidity(defect *defect_arr,char *str){
 
            return 0;
         }
-        else{
-            defect_arr->status ="close";
-        }
         return 1;
     }
       
