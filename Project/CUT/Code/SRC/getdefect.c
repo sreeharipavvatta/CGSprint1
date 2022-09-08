@@ -21,7 +21,7 @@ struct defect{
 typedef struct defect defect;
 
 //Defect No:Description:Module name:Functional area:Filed-on Date:Status:Type 
-void checkValidity(defect *defect_arr,char *str){
+int checkValidity(defect *defect_arr,char *str){
     int count=0;
     char *s = (char*)calloc(sizeof(str),sizeof(char));
     s = str;
@@ -39,8 +39,8 @@ void checkValidity(defect *defect_arr,char *str){
                       defect_arr->moduleName=token; break;
              case 4 : defect_arr->functionalArea=(char*)calloc(sizeof(token),sizeof(char));
                       defect_arr->functionalArea=token; break;
-             case 5 : defect_arr->data=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->data=token; break;
+             case 5 : defect_arr->date=(char*)calloc(sizeof(token),sizeof(char));
+                      defect_arr->date=token; break;
              case 6 : defect_arr->status=(char*)calloc(sizeof(token),sizeof(char));
                       defect_arr->status=token; break;
              case 7 : defect_arr->type=(char*)calloc(sizeof(token),sizeof(char));
@@ -50,19 +50,27 @@ void checkValidity(defect *defect_arr,char *str){
              token = strtok(NULL,":");
         }
 
-        if(count==7){
-          if(defect_arr->status=="open")
-           validDefect(defect_arr,str);
+        if(count!=7||defect_arr->status!="open"){
+           if(count!=7){
+              invalidDefect(defect_arr->defectID,str);
+           }
+           free(defect_arr->defectID);
+           free(defect_arr->description);
+           free(defect_arr->moduleName);
+           free(defect_arr->functionalArea);
+           free(defect_arr->date);
+           free(defect_arr->status);
+           free(defect_arr->type);
+
+           return 0;
         }
         else{
-            invalidDefect(defect_arr->defectID,str);
+            defect_arr->status ="close";
         }
+        return 1;
     }
       
-}
-void validDefect(defect *defect_arr, char *str){
-     
-}
+
 void invalidDefect(char* defectID,char *str){
 
 }
@@ -70,4 +78,19 @@ void invalidDefect(char* defectID,char *str){
 void getDefect(char *file_loc){
     defect * defect_arr[MAXDEFECT];
 
+  char str[MAXSTRLEN + 1];
+  int i=0;
+    while (1)
+    {
+        if (fgets(str, MAXSTRLEN, fpr) == NULL)
+        {
+            break;
+        }
+        i++;
+        if(!checkValidity(str,defect_arr[i])){
+        i--;
+    }
+    }
+    
+    
 }
