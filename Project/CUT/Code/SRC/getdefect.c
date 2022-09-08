@@ -28,7 +28,7 @@ typedef struct defect defect;
 int checkValidity(char *str)
 {
     int count = 0;
-    char *s = (char *)calloc(strlen(str), sizeof(char)); // s is a temporary pointer to string
+    char *s = (char *)calloc(strlen(str), sizeof(char));
     stpcpy(s, str);
 
     char *token = strtok(s, ":");
