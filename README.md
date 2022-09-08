@@ -1,8 +1,23 @@
 # CGSprint1
 
+## Directory Structure
+1. [Project](Project/): Main Project folder.
+   1. [Cut](Project/CUT/)
+      1. [Code](Project/CUT/Code/)
+         1. [Bin](Project/CUT/Code/bin/): Contains executable file.
+         2. [Data](Project/CUT/Code/data/): Contains input data file.
+         3. [Header](Project/CUT/Code/Header/): Contains all header files.
+         4. [Make](Project/CUT/Code/Make/): Contains Makefile.
+         5. [Obj](Project/CUT/Code/obj/): Contains compiled object files.
+         6. [SRC](Project/CUT/Code/SRC/): Contains source code.
+      2. [ToolsReport](Project/CUT/ToolsReport/)
+   2. [Design](Project/DESIGN/)
+   3. [RTM](project/RTM)
+2. [README.md](README.md)
+
 ## Contributors:
-- Aman
-- Karan
-- Krishna
-- Sreehari
-- Vamsee
+- [Aman Bhaskar](https://github.com/amanbh2)
+- [Karan](https://github.com/telarKaran)
+- [Krishna](https://github.com/Chaitu1018)
+- [Sreehari](https://github.com/sreeharipavvatta)
+- [Vamsee](https://github.com/ssvk053)
