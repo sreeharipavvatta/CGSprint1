@@ -6,7 +6,7 @@
   - Create a new branch.
   - Cross check you are now working in new branch only.
 - Now as we have our main file you can use it to test your function.
-- Check Commands below.
+- Check [Commands](#commands) below.
 
 ## Commands
 To pull from GitHub {everyday first step}
