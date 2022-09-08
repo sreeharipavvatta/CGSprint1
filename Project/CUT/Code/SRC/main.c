@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     int err; //err: captures error
     for (int i = 1; i < argc; i++)
     {
-        printf("\n---Creating Thread for file %d: %s ---\n", i, argv[i]);
+        printf("\n--- Creating Thread for file %d: %s ---\n", i, argv[i]);
         err = pthread_create(&threadIDarr[i - 1], NULL, (void *)getDefect, (void *)argv[i]);
         if (err)
         {

@@ -5,4 +5,4 @@ main.o: ../src/main.c
 getdefect.o: ../src/getdefect.c
 	gcc -o ../obj/getdefect.o ../src/getdefect.c -c
 clean:
-	rm ../obj/*.o ../bin/*.exe
+	rm ../obj/*.o ../bin/*.exe ../data/invalidDefectList.txt

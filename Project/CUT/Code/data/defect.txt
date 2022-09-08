@@ -1,5 +1,5 @@
-F001:Column values in BOM reports are incorrect:Aircraft design:BOM reports:21/08/2022:open:fatal  
-F002:Unit prices are not shown while preparing invoice:Invoices:Display products:23/04/2022:close:fatal  
-N001:BOM report columns not alligned properly:Aircraft design:BOM reports:21/08/2022:open:niceToHave
+F001:Column values in BOM reports are incorrect:Aircraft design:BOM reports:21/08/2022:open:fatal
+F002:Unit prices are not shown while preparing invoice:Invoices:Display products:23/04/2022:close:fatal
 O001:Aircraft:BOM reports:21/08/2022:open:niceToHave
+N001:BOM report columns not alligned properly:Aircraft design:BOM reports:21/08/2022:open:niceToHave
 F003:Column values in cliant dashboard are not shown:Aircraft design:Manage customers:21/08/2022:open:fatal
