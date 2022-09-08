@@ -56,10 +56,3 @@ void *getDefect(void *file)
     fclose(fpr);
     
 }
-/*
-int main()
-{
-	char str[]="../data/defect.txt";
-	getDefect(str);
-	return EXIT_SUCCESS;
-}*/
