@@ -22,46 +22,72 @@ struct defect
 };
 typedef struct defect defect;
 
-//Defect No:Description:Module name:Functional area:Filed-on Date:Status:Type 
-void checkValidity(defect *defect_arr,char *str){
-    int count=0;
-    char *s = (char*)calloc(sizeof(str),sizeof(char));
-    s = str;
+// Defect Line Format:
+// Defect No:Description:Module name:Functional area:Filed-on Date:Status:Type
+void checkValidity(defect *defect_arr, char *str)
+{
+    int count = 0;
+    char *s = (char *)calloc(sizeof(str), sizeof(char));
+    s = str; // Copy input str into separate string s
 
-           char* token = strtok(s,":");
-        while(token != NULL){
-             count++;
-             switch (count)
-             {
-             case 1 : defect_arr->defectID=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->defectID=token; break;
-             case 2 : defect_arr->description=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->description=token; break;
-             case 3 : defect_arr->moduleName=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->moduleName=token; break;
-             case 4 : defect_arr->functionalArea=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->functionalArea=token; break;
-             case 5 : defect_arr->data=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->data=token; break;
-             case 6 : defect_arr->status=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->status=token; break;
-             case 7 : defect_arr->type=(char*)calloc(sizeof(token),sizeof(char));
-                      defect_arr->type=token; break;
-             default:break;
-             }
-             token = strtok(NULL,":");
+    char *token = strtok(s, ":");
+    while (token != NULL)
+    {
+        count++;
+        switch (count)
+        {
+        case 1:
+            defect_arr->defectID = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->defectID = token;
+            break;
+        case 2:
+            defect_arr->description = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->description = token;
+            break;
+        case 3:
+            defect_arr->moduleName = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->moduleName = token;
+            break;
+        case 4:
+            defect_arr->functionalArea = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->functionalArea = token;
+            break;
+        case 5:
+            defect_arr->date = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->date = token;
+            break;
+        case 6:
+            defect_arr->status = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->status = token;
+            break;
+        case 7:
+            defect_arr->type = (char *)calloc(sizeof(token), sizeof(char));
+            defect_arr->type = token;
+            break;
+        default:
+            break;
         }
-
-        if(count==7){
-          if(defect_arr->status=="open")
-           validDefect(defect_arr,str);
-        }
-        else{
-            invalidDefect(defect_arr->defectID,str);
-        }
+        token = strtok(NULL, ":");
     }
-      
+    if (count != 7 || defect_arr->status != "open")
+    {
+        // validDefect(defect_arr, str);
+        if (count != 7)
+        {
+            invalidDefect(defect_arr->defectID, str);
+        }
+        free(defect_arr->defectID);
+        free(defect_arr->description);
+        free(defect_arr->moduleName);
+        free(defect_arr->functionalArea);
+        free(defect_arr->date);
+        free(defect_arr->status);
+        free(defect_arr->type);
+        
+    }
+
 }
+
 void validDefect(defect *defect_arr, char *str)
 {
 }
@@ -99,9 +125,8 @@ void *getDefect(void *file)
         {
             break;
         }
-        checkValidity(str);
+        checkValidity(defect_arr, str);
     }
-
 
     fclose(fpr);
 }
