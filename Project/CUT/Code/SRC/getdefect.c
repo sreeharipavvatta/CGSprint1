@@ -26,22 +26,20 @@ void checkValidity(char *str)
 }
 void validDefect(defect *defect_arr, char *str)
 {
-    
 }
 void invalidDefect(char *defectID, char *str)
 {
-    printf("Invalid Defect ID : %s\n",defectID);
-	char *filename = "../data/invalidDefectList.txt";
-	FILE *fp;
-	fp = fopen(filename, "a");
-	 if (fp == NULL)
+    printf("Invalid Defect ID : %s\n", defectID);
+    char *filename = "../data/invalidDefectList.txt";
+    FILE *fp;
+    fp = fopen(filename, "a");
+    if (fp == NULL)
     {
-       printf("Issue in opening the input file");
-	   return EXIT_FAILURE;
+        printf("\n--- Unable to write into output file ---");
+        pthread_exit(NULL);
     }
-	fprintf(fp, "%s\n", str);
-	fclose(fp);
-
+    fprintf(fp, "%s\n", str);
+    fclose(fp);
 }
 void *getDefect(void *file)
 {
@@ -49,13 +47,13 @@ void *getDefect(void *file)
     char *file_loc = (char *)file;
 
     FILE *fpr = fopen(file_loc, "r");
-    if (fpr == NULL) //File Validation
+    if (fpr == NULL) // File Validation
     {
         printf("cannot open file - %s\n", file_loc);
-        exit(1);
+        pthread_exit(NULL);
     }
 
-    //Reading from defect file
+    // Reading from defect file
     char str[MAXSTRLEN + 1];
     while (1)
     {
@@ -65,7 +63,6 @@ void *getDefect(void *file)
         }
         checkValidity(str);
     }
-    
+
     fclose(fpr);
-    
 }
