@@ -3,12 +3,15 @@ Filename: getdefect.c
 Description: Read all defects from input file.
 */
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <string.h>
 #define SUCCESS 1
 #define ERROR 0
 #define MAXDEFECT 10
-struct defect{
+#define MAXSTRLEN 200
+struct defect
+{
     char *defectID;
     char *description;
     char *moduleName;
@@ -16,7 +19,6 @@ struct defect{
     char *date;
     char *status;
     char *type;
-
 };
 typedef struct defect defect;
 
@@ -67,14 +69,33 @@ int checkValidity(defect *defect_arr,char *str){
         return 1;
     }
       
-
-void invalidDefect(char* defectID,char *str){
-
+void invalidDefect(char *defectID, char *str)
+{
+    printf("Invalid Defect ID : %s\n", defectID);
+    char *filename = "../data/invalidDefectList.txt";
+    FILE *fp;
+    fp = fopen(filename, "a");
+    if (fp == NULL)
+    {
+        printf("\n--- Unable to write into output file ---");
+        pthread_exit(NULL);
+    }
+    fprintf(fp, "%s\n", str);
+    fclose(fp);
 }
+void *getDefect(void *file)
+{
+    defect *defect_arr[MAXDEFECT];
+    char *file_loc = (char *)file;
 
-void getDefect(char *file_loc){
-    defect * defect_arr[MAXDEFECT];
+    FILE *fpr = fopen(file_loc, "r");
+    if (fpr == NULL) // File Validation
+    {
+        printf("cannot open file - %s\n", file_loc);
+        pthread_exit(NULL);
+    }
 
+    // Reading from defect file
   char str[MAXSTRLEN + 1];
   int i=0;
     while (1)
@@ -90,4 +111,5 @@ void getDefect(char *file_loc){
     }
     
     
+    fclose(fpr);
 }
