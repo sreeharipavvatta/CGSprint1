@@ -26,9 +26,22 @@ void checkValidity(char *str)
 }
 void validDefect(defect *defect_arr, char *str)
 {
+    
 }
-void invalidDefect(char *str)
+void invalidDefect(char *defectID, char *str)
 {
+    printf("Invalid Defect ID : %s\n",defectID);
+	char *filename = "../data/invalidDefectList.txt";
+	FILE *fp;
+	fp = fopen(filename, "a");
+	 if (fp == NULL)
+    {
+       printf("Issue in opening the input file");
+	   return EXIT_FAILURE;
+    }
+	fprintf(fp, "%s\n", str);
+	fclose(fp);
+
 }
 void *getDefect(void *file)
 {
