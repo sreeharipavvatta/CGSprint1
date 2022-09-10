@@ -95,9 +95,15 @@ void assignEmployee(defect *arr[], int vdc)
     Loop on defect arr
     If defect status = open
     send that defect to searchProgrammer fn
-
-
     */
+    int odc=0;//odc: Open Defects Count
+    for(int i=0;i<vdc;i++){
+        if(!strcmp(arr[i]->status,"open")){
+            odc++;
+            searchProgrammer(arr[i],emp_arr);
+        }
+    }
+    printf("\n--- Total Open Defects %d ---\n",odc);
     
     // displayvalidDefects(arr, vdc);
 }
