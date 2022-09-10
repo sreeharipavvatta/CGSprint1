@@ -1,9 +1,9 @@
 # Progress
 ## Documentation
 - [x] Software Requirement Specifications {SRS}
-- [ ] Pseudocode
-- [ ] Story Board
-- [ ] DFD Digarams {Level 0 & Level 1}
+- [x] Pseudocode
+- [x] Story Board
+- [x] DFD Digarams {Level 0 & Level 1}
 
 ## Input Files
 - [x] Sample Defect File

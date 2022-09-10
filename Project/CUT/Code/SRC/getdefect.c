@@ -6,25 +6,12 @@ Description: Read all defects from input file.
 #include <stdlib.h>
 #include <pthread.h>
 #include <string.h>
+#include "../Header/fun_head.h"
 #define SUCCESS 1
 #define ERROR 0
 #define MAXDEFECT 10
 #define MAXSTRLEN 200
 extern pthread_mutex_t lock;
-struct defect
-{
-    char *defectID;
-    char *description;
-    char *moduleName;
-    char *functionalArea;
-    char *date;
-    char *status;
-    char *type;
-};
-typedef struct defect defect;
-
-// Defect Line Format
-// Defect No:Description:Module name:Functional area:Filed-on Date:Status:Type
 int checkValidity(char *str)
 {
     int count = 0;
@@ -46,6 +33,8 @@ int checkValidity(char *str)
         return 0;
     }
 }
+// Defect Line Format
+// Defect No:Description:Module name:Functional area:Filed-on Date:Status:Type
 void validDefect(defect *defectptr, char *str)
 {
     char *newstr = (char *)calloc(strlen(str), sizeof(char));
@@ -129,8 +118,9 @@ void *getDefect(void *file)
             invalidDefect(str);
         }
     }
-    printf("\n\n\n--- Total Valid Defects: %d ---", vdc);
+    printf("\n\n--- Total Valid Defects: %d ---\n\n", vdc);
     displayvalidDefects(defect_arr, vdc);
+    assignEmployee(defect_arr,vdc);
 
     for (int i = 0; i < vdc; i++)
     {
