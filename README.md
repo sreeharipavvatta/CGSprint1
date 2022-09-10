@@ -1,4 +1,5 @@
-# CGSprint1
+# Defect Programmer Assignment
+This project aims to develop a Defect Programmer Assignments application where clients of a Software Development company report defects in software they purchased. These defects are assigned to programmers depending on the functional area they are handling. 
 
 ## Directory Structure
 1. [Project](Project/): Main Project folder.
