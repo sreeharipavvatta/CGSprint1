@@ -15,9 +15,7 @@ Description: Assigns defects to programmers
 extern pthread_mutex_t lock;
 int getEmployee(Emp *arr[])
 {
-    char *f_loc = "../data/employee.txt"; // Location of Employee Database
-    int count = 0;
-    /*
+      /*
     arr[] is array of Employee Structure
     Create File Pointer to open employee.txt
     Display proper error if file cannot be opened anyhow.
@@ -26,8 +24,56 @@ int getEmployee(Emp *arr[])
 
     While storing insitialise Employee->n_defect =0;
     */
+    char *f_loc = "../data/employee.txt"; // Location of Employee Database
 
-    return count;
+
+    FILE *fpr = fopen(f_loc, "a");
+            if (fpr == NULL)
+            {
+                printf("\n--- Unable to write into output Employee file ---\n");
+                exit(1);
+            }
+
+    char str[MAXSTRLEN + 1];
+    int i = 0;
+    while (1)
+    {
+        if (fgets(str, MAXSTRLEN, fpr) == NULL)
+        {
+            break;
+        }
+       
+    //    EmpID:Emp Name:Business Unit:ManageID,Functional area of expertise:
+        //    Designation
+            arr[i] = (Emp *)calloc(1, sizeof(Emp));
+               
+            char *newstr = (char *)calloc(strlen(str), sizeof(char));
+            strcpy(newstr, str);
+            char *token = strtok(newstr, ":");
+            arr[i]->ID = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->ID = token;
+            token = strtok(NULL, ":");
+            arr[i]->Name = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->Name = token;
+            token = strtok(NULL, ":");
+            arr[i]->Business Unit = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->Business Unit = token;
+            token = strtok(NULL, ":");
+            arr[i]->ManageID = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->ManageID = token;
+            token = strtok(NULL, ":");
+            arr[i]->Functional area of expertise = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->Functional area of expertise = token;
+            token = strtok(NULL, ":");
+            arr[i]->Designation = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->Designation = token;
+            arr[i]->n_defect = (char *)calloc(strlen(MAXDEFECT), sizeof(char));
+            arr[i]->n_defect = 0;
+            i++;
+    }
+   
+   
+    
 }
 void displayEmployees(Emp *arr[], int n_emp)
 {
