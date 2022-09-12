@@ -7,4 +7,4 @@ getdefect.o: ../src/getdefect.c
 assign.o: ../src/assign.c
 	gcc -o ../obj/assign.o ../src/assign.c -c
 clean:
-	rm ../obj/*.o ../bin/*.exe ../data/invalidDefectList.txt
+	rm ../obj/*.o ../bin/*.exe ../data/out/*.txt

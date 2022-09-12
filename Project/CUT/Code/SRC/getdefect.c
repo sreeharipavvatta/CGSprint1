@@ -11,7 +11,7 @@ Tokenises each line and store valid defects into array of defect structure.
 #include "../Header/fun_head.h"
 #define SUCCESS 1
 #define ERROR 0
-#define MAXDEFECT 10 // Maximum Number of Defects in each input file is set to 10
+#define MAXDEFECT 10  // Maximum Number of Defects in each input file is set to 10
 #define MAXSTRLEN 200 // Maximum String length is set to 200
 extern pthread_mutex_t lock;
 /*
@@ -26,7 +26,7 @@ At last, passes this array with valid entries to assign Programmer Function
 
 
 RETURNS: 1 in case of valid entry.
-         0 in case of invalid entry. 
+         0 in case of invalid entry.
 */
 int checkValidity(char *str)
 {
@@ -112,8 +112,8 @@ void invalidDefect(char *str)
     char *newstr = (char *)calloc(strlen(str), sizeof(char));
     strcpy(newstr, str);
     char *token = strtok(newstr, ":");
-    printf("\nInvalid Defect ID: %s", token);
-    char *filename = "../data/invalidDefectList.txt";
+    printf("\nDefect ID: %s contains insufficient information.", token);
+    char *filename = "../data/out/invalidDefect.txt";
     FILE *fp;
     fp = fopen(filename, "a");
     if (fp == NULL)
@@ -168,9 +168,9 @@ void *getDefect(void *file)
             invalidDefect(str);
         }
     }
-    printf("\n\n--- Total Valid Defects: %d ---\n\n", vdc);
+    printf("\n\n--- Total Valid Defects: %d ---\n", vdc);
     displayvalidDefects(defect_arr, vdc);
-    assignEmployee(defect_arr,vdc);
+    assignEmployee(defect_arr, vdc);
 
     for (int i = 0; i < vdc; i++)
     {

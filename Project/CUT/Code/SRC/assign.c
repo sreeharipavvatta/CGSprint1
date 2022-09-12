@@ -54,7 +54,7 @@ int getEmployee(Emp *arr[])
         arr[i]->Designation = (char *)calloc(strlen(token), sizeof(char));
         arr[i]->Designation = token;
         arr[i]->n_defect = 0;
-        arr[i]->assigned_arr[MAXDEFECT]=(defect *)calloc(5,sizeof(defect));
+        arr[i]->assigned_arr[MAXDEFECT] = (defect *)calloc(5, sizeof(defect));
         i++;
     }
 
@@ -78,47 +78,40 @@ void unassignedDefect(defect *defectptr)
 
     */
 }
-void searchProgrammer(defect *defectptr, Emp *arr[])
+void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
 {
-    /*defectptr is structure of defect with status open
-    arr[] is array of Employee Structure
-
-    For incoming defectptr loop on arr[],
-    search for employee with same functional area
-    {Employee is arr[index], index at which search is successfull}
-
-    If found, change status of defect to assigned, increase Employee->n_defect
-    and put whole assigned defect structure inside Employee->assigned_arr[n-defect-1]
-
-    At the end, defects assigned to programmers to be displayed along with defect description,
-    module name, functional area, filed-on date type, Emp ID and EMP Name on the terminal.
-
-    If not found call unassignedDefect Function
-
-    */
-    // printf("\nID: %s Status: %s", defectptr->defectID, defectptr->status);
+    int i = 0, foundflag = 0;
+    for (i = 0; i < n_emp; i++)
+    {
+        if (strcmp(defectptr->functionalArea, arr[i]->Expertise) == 0)
+        {
+            foundflag = 1;
+            defectptr->status = "Assigned";
+            arr[i]->n_defect++;
+            arr[i]->assigned_arr[(arr[i]->n_defect) - 1] = defectptr;
+            break;
+        }
+    }
+    if (foundflag == 0)
+    {
+        printf("\n--- Programmer not found for defect Id: %s ---", defectptr->defectID);
+        unassignedDefect(defectptr);
+        return;
+    }
+    else
+    {
+        printf("\nDefect Id: %s\nStatus: %s\n", defectptr->defectID, defectptr->status);
+        printf("Module Name: %s\nFunctional Area: %s\nDescription: %s\n\nHas been assigned to:-\nEmployee Id: %s\nEmployee Name: %s\n", defectptr->moduleName, defectptr->functionalArea, defectptr->description, arr[i]->Id, arr[i]->Name);
+    }
 }
 void createEmployeeFile(Emp *arr[], int n_emp)
 {
-    /*
-    arr[] is array of Employee Structure
-    Loop on arr, if at some index arr[index]->n_defect >0
-    Which means there is some defect assigned to the employee
-
-    Create a file with name <arr[index]->Id>_assignments.txt
-
-    Put following information inside the file in one line for each assignment.
-    defects ID, defect description, module name, functional area,
-    filed-on date, type, Emp ID and EMP Name.
-
-
-    */
     char out_file[MAXSTRLEN];
     for (int i = 0; i < n_emp; i++)
     {
         if (arr[i]->n_defect > 0)
         {
-            sprintf(out_file, "../data/%s_assignments.txt", arr[i]->Id);
+            sprintf(out_file, "../data/out/%s_assignments.txt", arr[i]->Id);
             FILE *fp = fopen(out_file, "a");
             if (fp == NULL)
             {
@@ -138,24 +131,24 @@ void assignEmployee(defect *arr[], int vdc)
     Emp *emp_arr[MAXEMP];             // Array of Employee structure
     int n_emp = getEmployee(emp_arr); // n_emp: No of employees in database
 
-    printf("\n\n--- Total Employee: %d ---\n\n", n_emp);
+    printf("\n\n--- Total Employee: %d ---\n", n_emp);
     displayEmployees(emp_arr, n_emp);
 
-    /*
-    Loop on defect arr
-    If defect status = open
-    send that defect to searchProgrammer fn
-    */
     int odc = 0; // odc: Open Defects Count
     for (int i = 0; i < vdc; i++)
     {
         if (!strcmp(arr[i]->status, "open"))
         {
             odc++;
-            searchProgrammer(arr[i], emp_arr);
+            printf("\n\n--- Searching Programmer for defect Id: %s ---", arr[i]->defectID);
+            searchProgrammer(arr[i], emp_arr, n_emp);
         }
     }
-    printf("\n--- Total Open Defects %d ---\n", odc);
+    // printf("\n--- Total Open Defects %d ---\n", odc);
+    createEmployeeFile(emp_arr, n_emp);
 
-    // displayvalidDefects(arr, vdc);
+    for (int i = 0; i < odc; i++)
+    {
+        free(emp_arr[i]);
+    }
 }
