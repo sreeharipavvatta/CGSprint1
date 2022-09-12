@@ -15,7 +15,7 @@
 - [x] main.c
 - [x] makefile
 - [x] getDefect.c
-- [ ] assign.c
+- [x] assign.c
 
 ## CUnit Test Files
 - [ ] testdriver.c
@@ -31,5 +31,5 @@
 - [x] Multithreading
 - [ ] 1 MUTEX Per Programmer
 - [x] Dynamic Memory Allocation
-- [ ] Read Input Files
-- [ ] Creat Output Files
+- [x] Read Input Files
+- [x] Creat Output Files

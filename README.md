@@ -8,7 +8,8 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
    1. [Cut](Project/CUT/)
       1. [Code](Project/CUT/Code/)
          1. [Bin](Project/CUT/Code/bin/): Contains executable file.
-         2. [Data](Project/CUT/Code/data/): Contains input data file.
+         2. [Data](Project/CUT/Code/data/): Contains input data file.   
+            1. [out](Project/CUT/Code/data/out/): Contains output files generated after execution of program.
          3. [Header](Project/CUT/Code/Header/): Contains all header files.
          4. [Make](Project/CUT/Code/Make/): Contains Makefile.
          5. [Obj](Project/CUT/Code/obj/): Contains compiled object files.
