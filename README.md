@@ -16,6 +16,7 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
       2. [ToolsReport](Project/CUT/ToolsReport/)
    2. [Design](Project/DESIGN/)
    3. [RTM](project/RTM)
+   4. [SRS](project/SRS/)
 2. [README.md](README.md)
 
 ## Contributors:

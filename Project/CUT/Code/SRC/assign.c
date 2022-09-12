@@ -1,6 +1,7 @@
 /*
-Filename: assign.c
-Description: Assigns defects to programmers
+FILE NAME: assign.c
+
+DESCRIPTION: For each valid defect it searches for programmers if found assigns that defect to them.
 */
 #include <stdio.h>
 #include <stdlib.h>

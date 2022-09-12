@@ -1,6 +1,8 @@
 /*
-Filename: getdefect.c
-Description: Read all defects from input file.
+FILE NAME: getdefect.c
+
+DESCRIPTION: It reads all lines of defect information contained inside input files.
+Tokenises each line and store valid defects into array of defect structure.
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,9 +11,23 @@ Description: Read all defects from input file.
 #include "../Header/fun_head.h"
 #define SUCCESS 1
 #define ERROR 0
-#define MAXDEFECT 10
-#define MAXSTRLEN 200
+#define MAXDEFECT 10 // Maximum Number of Defects in each input file is set to 10
+#define MAXSTRLEN 200 // Maximum String length is set to 200
 extern pthread_mutex_t lock;
+/*
+FUNCTION NAME: checkValidity()
+
+DESCRIPTION: It take the defect line as an argument, the line breaks into two different parts.
+If required information is given consider as valid entry.
+Else consider it as invalid entry and pass it to the invalidDefect() function.
+For all valid entries, store values in a proper data structures.
+All defects are stored inside an array of defect structure.
+At last, passes this array with valid entries to assign Programmer Function
+
+
+RETURNS: 1 in case of valid entry.
+         0 in case of invalid entry. 
+*/
 int checkValidity(char *str)
 {
     int count = 0;
@@ -35,6 +51,14 @@ int checkValidity(char *str)
 }
 // Defect Line Format
 // Defect No:Description:Module name:Functional area:Filed-on Date:Status:Type
+/*
+FUNCTION NAME: validDefect()
+
+DESCRIPTION: It takes valid Defect strucuture and Defect String/Line as Input.
+Tokenises string and stores it in the defect structure.
+
+RETURNS: void
+*/
 void validDefect(defect *defectptr, char *str)
 {
     char *newstr = (char *)calloc(strlen(str), sizeof(char));
@@ -61,6 +85,13 @@ void validDefect(defect *defectptr, char *str)
     defectptr->type = (char *)calloc(strlen(token), sizeof(char));
     defectptr->type = token;
 }
+/*
+FUNCTION NAME: displayValidDefects()
+
+DESCRIPTION: It take array of defects as argument and displays all defect elements.
+
+RETURNS: void
+*/
 void displayvalidDefects(defect *arr[], int vdc)
 {
     for (int i = 0; i < vdc; i++)
@@ -68,6 +99,14 @@ void displayvalidDefects(defect *arr[], int vdc)
         printf("\nID: %s Status: %s", arr[i]->defectID, arr[i]->status);
     }
 }
+/*
+FUNCTION NAME: invalidDefect()
+
+DESCRIPTION: Displays proper error for invalid Defects and stores them inside a file
+named as "invalidDefectList.txt"
+
+RETURNS: void
+*/
 void invalidDefect(char *str)
 {
     char *newstr = (char *)calloc(strlen(str), sizeof(char));
@@ -85,6 +124,17 @@ void invalidDefect(char *str)
     fprintf(fp, "%s", str);
     fclose(fp);
 }
+
+/*
+FUNCTION NAME: getDefect
+
+DESCRIPTION: It takes the location of file as input.
+Open the file with a file pointer, if the pointer is NULL print "cannot open file" and exit.
+Reads each line of the file  if the line returns NULL break the loop as we have reached the end of file.
+Else pass the content to check validity function.
+
+RETRUNS: Void {Nothing}
+*/
 void *getDefect(void *file)
 {
     pthread_mutex_lock(&lock);
