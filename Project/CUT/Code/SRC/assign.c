@@ -69,14 +69,23 @@ void displayEmployees(Emp *arr[], int n_emp)
 }
 void unassignedDefect(defect *defectptr)
 {
-    /*
-    defectptr contains structure of defect
-    Append whole information into a file "unassignedDefect.txt"
-    Create file if not present inside Project/CUT/Code/data/
-
-    Also display proper message on the terminal
-
-    */
+    char *fileDefectPtr = "../data/out/unassignedDefect.txt";
+	FILE *flp;
+	flp = fopen(fileDefectPtr, "a");
+	 if (flp == NULL)
+    {
+       printf("Issue in opening the input file");
+	   return ERROR;
+    }
+	fprintf(flp,  "%s : %s : %s : %s : %s : %s : %s\n", defectptr->defectID,
+                                                        defectptr->description,
+                                                        defectptr->moduleName,
+                                                        defectptr->functionalArea,
+                                                        defectptr->date,
+                                                        defectptr->status,
+                                                        defectptr->type);
+	fclose(flp);
+ 
 }
 void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
 {
