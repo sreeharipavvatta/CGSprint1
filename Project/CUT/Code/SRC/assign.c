@@ -27,10 +27,10 @@ int getEmployee(Emp *arr[])
     char *f_loc = "../data/employee.txt"; // Location of Employee Database
 
 
-    FILE *fpr = fopen(f_loc, "a");
+    FILE *fpr = fopen(f_loc, "r");
             if (fpr == NULL)
             {
-                printf("\n--- Unable to write into output Employee file ---\n");
+                printf("\n--- Unable to read Employee file ---\n");
                 exit(1);
             }
 
@@ -42,7 +42,7 @@ int getEmployee(Emp *arr[])
         {
             break;
         }
-       
+    //    D002:Mahesh Katkar:Pharmaceutical Systems:Licensing:Principal engineer
     //    EmpID:Emp Name:Business Unit:ManageID,Functional area of expertise:
         //    Designation
             arr[i] = (Emp *)calloc(1, sizeof(Emp));
@@ -56,14 +56,11 @@ int getEmployee(Emp *arr[])
             arr[i]->Name = (char *)calloc(strlen(token), sizeof(char));
             arr[i]->Name = token;
             token = strtok(NULL, ":");
-            arr[i]->Business Unit = (char *)calloc(strlen(token), sizeof(char));
-            arr[i]->Business Unit = token;
+            arr[i]->BUnit = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->BUnit = token;
             token = strtok(NULL, ":");
-            arr[i]->ManageID = (char *)calloc(strlen(token), sizeof(char));
-            arr[i]->ManageID = token;
-            token = strtok(NULL, ":");
-            arr[i]->Functional area of expertise = (char *)calloc(strlen(token), sizeof(char));
-            arr[i]->Functional area of expertise = token;
+            arr[i]->Expertise = (char *)calloc(strlen(token), sizeof(char));
+            arr[i]->Expertise area of expertise = token;
             token = strtok(NULL, ":");
             arr[i]->Designation = (char *)calloc(strlen(token), sizeof(char));
             arr[i]->Designation = token;
@@ -71,8 +68,9 @@ int getEmployee(Emp *arr[])
             arr[i]->n_defect = 0;
             i++;
     }
+
    
-   
+   return i;
     
 }
 void displayEmployees(Emp *arr[], int n_emp)
