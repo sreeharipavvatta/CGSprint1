@@ -70,22 +70,21 @@ void displayEmployees(Emp *arr[], int n_emp)
 void unassignedDefect(defect *defectptr)
 {
     char *fileDefectPtr = "../data/out/unassignedDefect.txt";
-	FILE *flp;
-	flp = fopen(fileDefectPtr, "a");
-	 if (flp == NULL)
+    FILE *flp;
+    flp = fopen(fileDefectPtr, "a");
+    if (flp == NULL)
     {
-       printf("Issue in opening the input file");
-	   return ERROR;
+        printf("\n--- Cannot open %s file ---", fileDefectPtr);
+        exit(1);
     }
-	fprintf(flp,  "%s : %s : %s : %s : %s : %s : %s\n", defectptr->defectID,
-                                                        defectptr->description,
-                                                        defectptr->moduleName,
-                                                        defectptr->functionalArea,
-                                                        defectptr->date,
-                                                        defectptr->status,
-                                                        defectptr->type);
-	fclose(flp);
- 
+    fprintf(flp, "%s : %s : %s : %s : %s : %s : %s", defectptr->defectID,
+            defectptr->description,
+            defectptr->moduleName,
+            defectptr->functionalArea,
+            defectptr->date,
+            defectptr->status,
+            defectptr->type);
+    fclose(flp);
 }
 void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
 {

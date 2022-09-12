@@ -147,6 +147,7 @@ void *getDefect(void *file)
         printf("\n--- Cannot open file: %s\n", file_loc);
         pthread_exit(NULL);
     }
+    printf("\n--- Processing file: %s", file_loc);
 
     // Reading from defect file
     char str[MAXSTRLEN + 1];
