@@ -24,6 +24,7 @@ struct employee{
     char *BUnit;
     char *Expertise;
     char *Designation;
+    pthread_mutex_t emplock;
     int n_defect;
     defect *assigned_arr[MAXDEFECT];
 };

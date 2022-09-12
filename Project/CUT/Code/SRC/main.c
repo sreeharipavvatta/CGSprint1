@@ -35,11 +35,11 @@ int main(int argc, char *argv[])
         exit(1);
     }
     // Initialising Mutex Lock
-    if (pthread_mutex_init(&lock, NULL) != 0)
-    {
-        printf("\n--- Mutex initialisation failed ---\n");
-        exit(1);
-    }
+    // if (pthread_mutex_init(&lock, NULL) != 0)
+    // {
+    //     printf("\n--- Mutex initialisation failed ---\n");
+    //     exit(1);
+    // }
 
     // Creating Threads for each defect file
     int err; // err: captures error
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         pthread_join(threadIDarr[i], NULL);
     }
 
-    pthread_mutex_destroy(&lock);
+    // pthread_mutex_destroy(&lock);
     pthread_exit(NULL);
     return SUCCESS;
 }

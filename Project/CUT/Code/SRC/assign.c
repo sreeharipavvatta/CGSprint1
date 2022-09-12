@@ -55,6 +55,11 @@ int getEmployee(Emp *arr[])
         arr[i]->Designation = token;
         arr[i]->n_defect = 0;
         arr[i]->assigned_arr[MAXDEFECT] = (defect *)calloc(5, sizeof(defect));
+        if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
+        {
+            printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
+            exit(1);
+        }
         i++;
     }
 
@@ -95,8 +100,11 @@ void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
         {
             foundflag = 1;
             defectptr->status = "Assigned";
+            pthread_mutex_lock(&arr[i]->emplock);
             arr[i]->n_defect++;
             arr[i]->assigned_arr[(arr[i]->n_defect) - 1] = defectptr;
+            pthread_mutex_unlock(&arr[i]->emplock);
+            pthread_mutex_destroy(&arr[i]->emplock);
             break;
         }
     }
@@ -139,8 +147,8 @@ void assignEmployee(defect *arr[], int vdc)
     Emp *emp_arr[MAXEMP];             // Array of Employee structure
     int n_emp = getEmployee(emp_arr); // n_emp: No of employees in database
 
-    printf("\n\n--- Total Employee: %d ---\n", n_emp);
-    displayEmployees(emp_arr, n_emp);
+    // printf("\n\n--- Total Employee: %d ---\n", n_emp);
+    // displayEmployees(emp_arr, n_emp);
 
     int odc = 0; // odc: Open Defects Count
     for (int i = 0; i < vdc; i++)
