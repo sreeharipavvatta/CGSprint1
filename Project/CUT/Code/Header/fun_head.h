@@ -18,7 +18,8 @@ struct defect
     char *type;
 };
 typedef struct defect defect;
-struct employee{
+struct employee
+{
     char *Id;
     char *Name;
     char *BUnit;
@@ -36,6 +37,6 @@ void displayvalidDefects(defect *arr[], int vdc);
 int getEmployee(Emp *arr[]);
 void displayEmployees(Emp *arr[], int n_emp);
 void createEmployeeFile(Emp *emp_ptr, defect *defectptr);
+int checkValidity(char *str);
 
-
-#endif //End of header file
+#endif // End of header file

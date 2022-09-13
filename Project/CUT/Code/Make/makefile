@@ -10,3 +10,6 @@ assign.o: ../src/assign.c
 	gcc -o ../obj/assign.o ../src/assign.c -c
 clean:
 	rm ../obj/*.o ../bin/*.exe ../data/out/*.txt
+test: ../../ToolsReport/CUnit/testprogram.c ../../ToolsReport/CUnit/func.c
+	gcc -o ../../ToolsReport/CUnit/test.exe ../../ToolsReport/CUnit/testprogram.c ../../ToolsReport/CUnit/func.c -lcunit
+	../../ToolsReport/CUnit/test.exe > ../../ToolsReport/CUnit/cunitReport.txt

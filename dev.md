@@ -23,8 +23,20 @@ To run executable file:
 cd Project/CUT/Code/bin
 ./app.exe ../data/defect.txt
 ```
-To clean executable and object files created:
+To compile and run executable sequentially { Above two steps combined into one }:
+```
+cd Project/CUT/Code/Make
+make run
+```
+
+To clean executable, object files and output files generated:
 ```
 cd Project/CUT/Code/Make
 make clean
+```
+### Unit Testing
+To test and to generate CUnit report:
+```
+cd Project/CUT/Code/Make
+make test
 ```
