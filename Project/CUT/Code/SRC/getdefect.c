@@ -136,7 +136,6 @@ RETRUNS: Void {Nothing}
 */
 void *getDefect(void *file)
 {
-    // pthread_mutex_lock(&lock);
     defect *defect_arr[MAXDEFECT];
     char *file_loc = (char *)file;
 
@@ -178,5 +177,4 @@ void *getDefect(void *file)
     }
 
     fclose(fpr);
-    // pthread_mutex_unlock(&lock);
 }

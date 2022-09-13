@@ -24,7 +24,7 @@ Separate threads are created for each input file passed, an array is given to st
 Passes file location with the thread to getdefect function Wait for all child threads to join.
 
 RETURNS: SUCCESS on Successfull execution of program
-         ERROR on failure at any point.   
+         ERROR on failure at any point.
 */
 int main(int argc, char *argv[])
 {
@@ -55,9 +55,9 @@ int main(int argc, char *argv[])
         }
     }
 
-    
 
-    
+
+
 
     // Waiting for child threads to join
     for (int i = 0; i < argc - 1; i++)
