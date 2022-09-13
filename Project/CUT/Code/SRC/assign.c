@@ -161,7 +161,8 @@ void assignEmployee(defect *arr[], int vdc)
         }
     }
     // printf("\n--- Total Open Defects %d ---\n", odc);
-    createEmployeeFile(emp_arr, n_emp);  
+    createEmployeeFile(emp_arr, n_emp);
+      
 
     
 }

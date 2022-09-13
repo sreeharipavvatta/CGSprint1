@@ -65,6 +65,8 @@ int main(int argc, char *argv[])
         pthread_join(threadIDarr[i], NULL);
     }
 
+    
+
     pthread_exit(NULL);
     return SUCCESS;
 }

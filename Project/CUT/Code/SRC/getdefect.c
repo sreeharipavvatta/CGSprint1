@@ -168,8 +168,8 @@ void *getDefect(void *file)
             invalidDefect(str);
         }
     }
-    printf("\n\n--- Total Valid Defects: %d ---\n", vdc);
-    displayvalidDefects(defect_arr, vdc);
+    // printf("\n\n--- Total Valid Defects: %d ---\n", vdc);
+    // displayvalidDefects(defect_arr, vdc);
     assignEmployee(defect_arr, vdc);
 
     for (int i = 0; i < vdc; i++)
