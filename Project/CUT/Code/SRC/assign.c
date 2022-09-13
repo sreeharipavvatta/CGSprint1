@@ -22,11 +22,11 @@ int getEmployee(Emp *arr[])
     FILE *fpr = fopen(f_loc, "r");
     if (fpr == NULL)
     {
-        printf("\n--- Unable to read Employee file ---\n");
+        printf("\n--- Unable to read Employee file at %s ---\n", f_loc);
         exit(1);
     }
 
-    char str[MAXSTRLEN + 1];
+    char str[MAXSTRLEN];
     int i = 0;
     while (1)
     {
@@ -57,10 +57,10 @@ int getEmployee(Emp *arr[])
         arr[i]->n_defect = 0;
         arr[i]->assigned_arr[MAXDEFECT] = (defect *)calloc(5, sizeof(defect));
         if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
-            {
-                printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
-                exit(1);
-            }
+        {
+            printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
+            exit(1);
+        }
         i++;
     }
 
@@ -94,7 +94,7 @@ void unassignedDefect(defect *defectptr)
 }
 void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
 {
-    int i = 0, foundflag = 0;
+    int i, foundflag = 0;
     for (i = 0; i < n_emp; i++)
     {
         if (strcmp(defectptr->functionalArea, arr[i]->Expertise) == 0)
@@ -104,6 +104,9 @@ void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
             pthread_mutex_lock(&arr[i]->emplock);
             arr[i]->n_defect++;
             arr[i]->assigned_arr[(arr[i]->n_defect) - 1] = defectptr;
+            createEmployeeFile(arr[i], defectptr);
+            printf("\nDefect Id: %s\nStatus: %s\n", defectptr->defectID, defectptr->status);
+            printf("Module Name: %s\nFunctional Area: %s\nDescription: %s\n\nHas been assigned to:-\nEmployee Id: %s\nEmployee Name: %s\n", defectptr->moduleName, defectptr->functionalArea, defectptr->description, arr[i]->Id, arr[i]->Name);
             pthread_mutex_unlock(&arr[i]->emplock);
             break;
         }
@@ -113,12 +116,6 @@ void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
         printf("\n--- Programmer not found for defect Id: %s ---", defectptr->defectID);
         unassignedDefect(defectptr);
         return;
-    }
-    else
-    {
-        createEmployeeFile(arr[i], defectptr);
-        printf("\nDefect Id: %s\nStatus: %s\n", defectptr->defectID, defectptr->status);
-        printf("Module Name: %s\nFunctional Area: %s\nDescription: %s\n\nHas been assigned to:-\nEmployee Id: %s\nEmployee Name: %s\n", defectptr->moduleName, defectptr->functionalArea, defectptr->description, arr[i]->Id, arr[i]->Name);
     }
 }
 void createEmployeeFile(Emp *emp_ptr, defect *defectptr)
@@ -133,7 +130,6 @@ void createEmployeeFile(Emp *emp_ptr, defect *defectptr)
     }
     fprintf(fp, "%s : %s : %s : %s : %s : %s : %s : %s", emp_ptr->Id, emp_ptr->Name, defectptr->defectID, defectptr->description, defectptr->moduleName, defectptr->functionalArea, defectptr->date, defectptr->type);
     fclose(fp);
-
 }
 void assignEmployee(defect *arr[], int vdc)
 {
@@ -150,5 +146,4 @@ void assignEmployee(defect *arr[], int vdc)
     }
     // printf("\n--- Total Open Defects %d ---\n", odc);
     // createEmployeeFile(emp_arr, n_emp);
-      
 }

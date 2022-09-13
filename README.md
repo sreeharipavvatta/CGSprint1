@@ -15,6 +15,7 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
          5. [Obj](Project/CUT/Code/obj/): Contains compiled object files.
          6. [SRC](Project/CUT/Code/SRC/): Contains source code.
       2. [ToolsReport](Project/CUT/ToolsReport/)
+         1. [CUnit](Project/CUT/ToolsReport/CUnit): Contains Unit Testing Report
    2. [Design](Project/DESIGN/)
    3. [RTM](project/RTM)
    4. [SRS](project/SRS/)

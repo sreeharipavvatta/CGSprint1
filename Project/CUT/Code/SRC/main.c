@@ -24,7 +24,7 @@ Separate threads are created for each input file passed, an array is given to st
 Passes file location with the thread to getdefect function Wait for all child threads to join.
 
 RETURNS: SUCCESS on Successfull execution of program
-         ERROR on failure at any point.   
+         ERROR on failure at any point.
 */
 int main(int argc, char *argv[])
 {
@@ -41,7 +41,6 @@ int main(int argc, char *argv[])
     printf("\n\n--- Total Employee: %d ---\n", n_emp);
     displayEmployees(emp_arr, n_emp);
 
-
     // Creating Threads for each defect file
     int err; // err: captures error
     for (int i = 1; i < argc; i++)
@@ -55,18 +54,19 @@ int main(int argc, char *argv[])
         }
     }
 
-    
-
-    
-
     // Waiting for child threads to join
-    for (int i = 0; i < argc - 1; i++)
+    for (int i = 0; i < n_files; i++)
     {
         pthread_join(threadIDarr[i], NULL);
     }
+    
+    // for (int i = 0; i < n_emp; i++)
+    // {
+    //     free(emp_arr[i]);
+    // }
+     
 
     
-
     pthread_exit(NULL);
     return SUCCESS;
 }

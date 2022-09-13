@@ -149,7 +149,7 @@ void *getDefect(void *file)
     printf("\n--- Processing file: %s", file_loc);
 
     // Reading from defect file
-    char str[MAXSTRLEN + 1];
+    char str[MAXSTRLEN];
     int vdc = 0;
     while (1)
     {
@@ -168,15 +168,21 @@ void *getDefect(void *file)
             invalidDefect(str);
         }
     }
+    fclose(fpr);
     // printf("\n\n--- Total Valid Defects: %d ---\n", vdc);
     // displayvalidDefects(defect_arr, vdc);
     assignEmployee(defect_arr, vdc);
 
     for (int i = 0; i < vdc; i++)
     {
+        // free(defect_arr[i]->defectID);
+        // free(defect_arr[i]->description);
+        // free(defect_arr[i]->moduleName);
+        // free(defect_arr[i]->functionalArea);
+        // free(defect_arr[i]->date);
+        // free(defect_arr[i]->status);
+        // free(defect_arr[i]->type);
         free(defect_arr[i]);
     }
-
-    fclose(fpr);
-    // pthread_mutex_unlock(&lock);
+    
 }
