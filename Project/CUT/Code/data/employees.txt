@@ -2,3 +2,6 @@ A123:Suresh Panchal:UK Telecom:BOM report:Principal engineer
 D012:J K Laxmi:Finacle Systems:Display products:Junior programmer  
 C015:Sandeep Khaire:UK Telecom:Manage customers:Senior programmer  
 D002:Mahesh Katkar:Pharmaceutical Systems:Licensing:Principal engineer
+B011:Sreehari Bhaskar:DBMS Department:Data manager:Senior Analyst
+C014:Aman Ps:USA Telecom:Manage customers:Counsultant
+XY02:Krishna Telar:voluptatem quia volupta:consequatur:Computer engineer
