@@ -1,7 +1,7 @@
+run: app
+	../bin/app.exe ../data/defect.txt ../data/defect2.txt > ../data/out/terminal.txt
 app: main.o getdefect.o assign.o
 	gcc -o ../bin/app.exe ../obj/main.o ../obj/getdefect.o ../obj/assign.o
-run:
-	../bin/app.exe ../data/defect.txt ../data/defect2.txt > ../data/out/terminal.txt
 main.o: ../src/main.c
 	gcc -o ../obj/main.o ../src/main.c -c
 getdefect.o: ../src/getdefect.c
