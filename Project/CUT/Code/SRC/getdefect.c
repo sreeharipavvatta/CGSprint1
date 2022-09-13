@@ -175,13 +175,6 @@ void *getDefect(void *file)
 
     for (int i = 0; i < vdc; i++)
     {
-        // free(defect_arr[i]->defectID);
-        // free(defect_arr[i]->description);
-        // free(defect_arr[i]->moduleName);
-        // free(defect_arr[i]->functionalArea);
-        // free(defect_arr[i]->date);
-        // free(defect_arr[i]->status);
-        // free(defect_arr[i]->type);
         free(defect_arr[i]);
     }
     

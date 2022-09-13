@@ -12,10 +12,68 @@ DESCRIPTION: This file contains main() function which acts as a starting point o
 #define ERROR 0
 #define MAXFILES 5 // Maximum Input Defect files is set to 5
 #define MAXEMP 10
+#define MAXSTRLEN 200
 pthread_t threadIDarr[MAXFILES]; // Array to store threadID of all child threads.
 Emp *emp_arr[MAXEMP];
 int n_emp;
+int getEmployee(Emp *arr[])
+{
+    char *f_loc = "../data/employees.txt"; // Location of Employee Database
 
+    FILE *fpr = fopen(f_loc, "r");
+    if (fpr == NULL)
+    {
+        printf("\n--- Unable to read Employee file at %s ---\n", f_loc);
+        exit(1);
+    }
+
+    char str[MAXSTRLEN];
+    int i = 0;
+    while (1)
+    {
+        if (fgets(str, MAXSTRLEN, fpr) == NULL)
+        {
+            break;
+        }
+
+        arr[i] = (Emp *)calloc(1, sizeof(Emp));
+
+        char *newstr = (char *)calloc(strlen(str), sizeof(char));
+        strcpy(newstr, str);
+        char *token = strtok(newstr, ":");
+        arr[i]->Id = (char *)calloc(strlen(token), sizeof(char));
+        arr[i]->Id = token;
+        token = strtok(NULL, ":");
+        arr[i]->Name = (char *)calloc(strlen(token), sizeof(char));
+        arr[i]->Name = token;
+        token = strtok(NULL, ":");
+        arr[i]->BUnit = (char *)calloc(strlen(token), sizeof(char));
+        arr[i]->BUnit = token;
+        token = strtok(NULL, ":");
+        arr[i]->Expertise = (char *)calloc(strlen(token), sizeof(char));
+        arr[i]->Expertise = token;
+        token = strtok(NULL, ":");
+        arr[i]->Designation = (char *)calloc(strlen(token), sizeof(char));
+        arr[i]->Designation = token;
+        arr[i]->n_defect = 0;
+        arr[i]->assigned_arr[MAXDEFECT] = (defect *)calloc(5, sizeof(defect));
+        if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
+        {
+            printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
+            exit(1);
+        }
+        i++;
+    }
+
+    return i;
+}
+void displayEmployees(Emp *arr[], int n_emp)
+{
+    for (int i = 0; i < n_emp; i++)
+    {
+        printf("\nID: %s Name: %s", arr[i]->Id, arr[i]->Name);
+    }
+}
 /*
 FUNCTION NAME: main()
 
@@ -59,13 +117,11 @@ int main(int argc, char *argv[])
     {
         pthread_join(threadIDarr[i], NULL);
     }
-    
-    // for (int i = 0; i < n_emp; i++)
-    // {
-    //     free(emp_arr[i]);
-    // }
-     
 
+    for (int i = 0; i < n_emp; i++)
+    {
+        pthread_mutex_destroy(&emp_arr[i]->emplock);
+    }
     
     pthread_exit(NULL);
     return SUCCESS;
