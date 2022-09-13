@@ -24,6 +24,7 @@ struct employee{
     char *BUnit;
     char *Expertise;
     char *Designation;
+    pthread_mutex_t emplock;
     int n_defect;
     defect *assigned_arr[MAXDEFECT];
 };
@@ -32,6 +33,9 @@ typedef struct employee Emp;
 void *getDefect(void *str);
 void assignEmployee(defect *arr[], int vdc);
 void displayvalidDefects(defect *arr[], int vdc);
+int getEmployee(Emp *arr[]);
+void displayEmployees(Emp *arr[], int n_emp);
+void createEmployeeFile(Emp *arr[], int n_emp);
 
 
 #endif //End of header file

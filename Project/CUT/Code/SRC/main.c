@@ -11,8 +11,10 @@ DESCRIPTION: This file contains main() function which acts as a starting point o
 #define SUCCESS 1
 #define ERROR 0
 #define MAXFILES 5 // Maximum Input Defect files is set to 5
+#define MAXEMP 10
 pthread_t threadIDarr[MAXFILES]; // Array to store threadID of all child threads.
-pthread_mutex_t lock; // lock is mutex variable used for synchronization.
+Emp *emp_arr[MAXEMP];
+int n_emp;
 
 /*
 FUNCTION NAME: main()
@@ -34,12 +36,11 @@ int main(int argc, char *argv[])
         printf("--- Usage: <executable> <defectfile1> <defectfile2> ... ---");
         exit(1);
     }
-    // Initialising Mutex Lock
-    if (pthread_mutex_init(&lock, NULL) != 0)
-    {
-        printf("\n--- Mutex initialisation failed ---\n");
-        exit(1);
-    }
+
+    n_emp = getEmployee(emp_arr);
+    printf("\n\n--- Total Employee: %d ---\n", n_emp);
+    displayEmployees(emp_arr, n_emp);
+
 
     // Creating Threads for each defect file
     int err; // err: captures error
@@ -54,13 +55,16 @@ int main(int argc, char *argv[])
         }
     }
 
+    
+
+    
+
     // Waiting for child threads to join
     for (int i = 0; i < argc - 1; i++)
     {
         pthread_join(threadIDarr[i], NULL);
     }
 
-    pthread_mutex_destroy(&lock);
     pthread_exit(NULL);
     return SUCCESS;
 }

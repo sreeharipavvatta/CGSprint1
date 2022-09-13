@@ -13,7 +13,6 @@ Tokenises each line and store valid defects into array of defect structure.
 #define ERROR 0
 #define MAXDEFECT 10  // Maximum Number of Defects in each input file is set to 10
 #define MAXSTRLEN 200 // Maximum String length is set to 200
-extern pthread_mutex_t lock;
 /*
 FUNCTION NAME: checkValidity()
 
@@ -137,7 +136,7 @@ RETRUNS: Void {Nothing}
 */
 void *getDefect(void *file)
 {
-    pthread_mutex_lock(&lock);
+    // pthread_mutex_lock(&lock);
     defect *defect_arr[MAXDEFECT];
     char *file_loc = (char *)file;
 
@@ -179,5 +178,5 @@ void *getDefect(void *file)
     }
 
     fclose(fpr);
-    pthread_mutex_unlock(&lock);
+    // pthread_mutex_unlock(&lock);
 }
