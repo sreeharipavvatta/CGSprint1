@@ -116,39 +116,27 @@ void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
     }
     else
     {
+        createEmployeeFile(arr[i], defectptr);
         printf("\nDefect Id: %s\nStatus: %s\n", defectptr->defectID, defectptr->status);
         printf("Module Name: %s\nFunctional Area: %s\nDescription: %s\n\nHas been assigned to:-\nEmployee Id: %s\nEmployee Name: %s\n", defectptr->moduleName, defectptr->functionalArea, defectptr->description, arr[i]->Id, arr[i]->Name);
     }
 }
-void createEmployeeFile(Emp *arr[], int n_emp)
+void createEmployeeFile(Emp *emp_ptr, defect *defectptr)
 {
     char out_file[MAXSTRLEN];
-    for (int i = 0; i < n_emp; i++)
+    sprintf(out_file, "../data/out/%s_assignments.txt", emp_ptr->Id);
+    FILE *fp = fopen(out_file, "a");
+    if (fp == NULL)
     {
-        if (arr[i]->n_defect > 0)
-        {
-            sprintf(out_file, "../data/out/%s_assignments.txt", arr[i]->Id);
-            FILE *fp = fopen(out_file, "a");
-            if (fp == NULL)
-            {
-                printf("\n--- Unable to write into output Employee file ---\n");
-                pthread_exit(NULL);
-            }
-            for (int j = 0; j < arr[i]->n_defect; j++)
-            {
-                fprintf(fp, "%s : %s : %s : %s : %s : %s : %s : %s", arr[i]->Id, arr[i]->Name, arr[i]->assigned_arr[j]->defectID, arr[i]->assigned_arr[j]->description, arr[i]->assigned_arr[j]->moduleName, arr[i]->assigned_arr[j]->functionalArea, arr[i]->assigned_arr[j]->date, arr[i]->assigned_arr[j]->type);
-            }
-            fclose(fp);
-        }
+        printf("\n--- Unable to write into output Employee file ---\n");
+        pthread_exit(NULL);
     }
+    fprintf(fp, "%s : %s : %s : %s : %s : %s : %s : %s", emp_ptr->Id, emp_ptr->Name, defectptr->defectID, defectptr->description, defectptr->moduleName, defectptr->functionalArea, defectptr->date, defectptr->type);
+    fclose(fp);
+
 }
 void assignEmployee(defect *arr[], int vdc)
 {
-    // Emp *emp_arr[MAXEMP];             // Array of Employee structure
-    // int n_emp = getEmployee(emp_arr); // n_emp: No of employees in database
-
-    // printf("\n\n--- Total Employee: %d ---\n", n_emp);
-    // displayEmployees(emp_arr, n_emp);
 
     int odc = 0; // odc: Open Defects Count
     for (int i = 0; i < vdc; i++)
@@ -161,8 +149,6 @@ void assignEmployee(defect *arr[], int vdc)
         }
     }
     // printf("\n--- Total Open Defects %d ---\n", odc);
-    createEmployeeFile(emp_arr, n_emp);
+    // createEmployeeFile(emp_arr, n_emp);
       
-
-    
 }

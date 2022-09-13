@@ -35,7 +35,7 @@ void assignEmployee(defect *arr[], int vdc);
 void displayvalidDefects(defect *arr[], int vdc);
 int getEmployee(Emp *arr[]);
 void displayEmployees(Emp *arr[], int n_emp);
-void createEmployeeFile(Emp *arr[], int n_emp);
+void createEmployeeFile(Emp *emp_ptr, defect *defectptr);
 
 
 #endif //End of header file
