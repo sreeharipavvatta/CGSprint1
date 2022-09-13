@@ -55,11 +55,7 @@ int getEmployee(Emp *arr[])
         arr[i]->Designation = token;
         arr[i]->n_defect = 0;
         arr[i]->assigned_arr[MAXDEFECT] = (defect *)calloc(5, sizeof(defect));
-        if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
-        {
-            printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
-            exit(1);
-        }
+        
         i++;
     }
 
@@ -100,6 +96,11 @@ void searchProgrammer(defect *defectptr, Emp *arr[], int n_emp)
         {
             foundflag = 1;
             defectptr->status = "Assigned";
+            if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
+            {
+                printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
+                exit(1);
+            }
             pthread_mutex_lock(&arr[i]->emplock);
             arr[i]->n_defect++;
             arr[i]->assigned_arr[(arr[i]->n_defect) - 1] = defectptr;
