@@ -14,8 +14,8 @@ DESCRIPTION: This file contains main() function which acts as a starting point o
 #define MAXEMP 10
 #define MAXSTRLEN 200
 pthread_t threadIDarr[MAXFILES]; // Array to store threadID of all child threads.
-Emp *emp_arr[MAXEMP];
-int n_emp;
+Emp *emp_arr[MAXEMP]; // Array of Employee Structure
+int n_emp; // Total count of Employee
 int getEmployee(Emp *arr[])
 {
     char *f_loc = "../data/employees.txt"; // Location of Employee Database
@@ -57,11 +57,11 @@ int getEmployee(Emp *arr[])
         arr[i]->Designation = token;
         arr[i]->n_defect = 0;
         arr[i]->assigned_arr[MAXDEFECT] = (defect *)calloc(5, sizeof(defect));
-        if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
-        {
-            printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
-            exit(1);
-        }
+        // if (pthread_mutex_init(&arr[i]->emplock, NULL) != 0)
+        // {
+        //     printf("\n--- Mutex initialisation failed for Employee Id: %s ---\n", arr[i]->Id);
+        //     exit(1);
+        // }
         i++;
     }
 
@@ -118,10 +118,10 @@ int main(int argc, char *argv[])
         pthread_join(threadIDarr[i], NULL);
     }
 
-    for (int i = 0; i < n_emp; i++)
-    {
-        pthread_mutex_destroy(&emp_arr[i]->emplock);
-    }
+    // for (int i = 0; i < n_emp; i++)
+    // {
+    //     pthread_mutex_destroy(&emp_arr[i]->emplock);
+    // }
     
     pthread_exit(NULL);
     return SUCCESS;
