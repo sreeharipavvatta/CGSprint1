@@ -32,7 +32,6 @@ Function main:
 
     Wait for all child threads to join
     
-    
     --END--
 
 
@@ -49,8 +48,7 @@ Function getDefect:
 	if the line returns NULL
 		return as we have reached the end of file
 	else
-		pass the content of the line to checkValidity function
-    
+		pass the content of the line to checkValidity function   
     
     --END--
     
@@ -66,7 +64,6 @@ Function checkValidity:
     For valid entries, create store values in proper datastrucuture.
     Add all defects inside an array of used data structure.
     Pass this array with valid entries to assignProgrammer Function.
-
 
     --END--
 
@@ -84,8 +81,7 @@ Function InvalidDefect:
 		CREATE "invaliddefect.txt"
 		APPEND entire invalid defect line 
 	ELSE 
-		APPEND entire invalid defect line
-    
+		APPEND entire invalid defect line  
     
     --END--
     
@@ -105,7 +101,6 @@ Fucntion assignProgrammer:
     IF status is open then call seachProgrammer Function,
     pass array of employee structure and array of valid defect strucutre to it.
 
-
     --END--
     
 
@@ -120,7 +115,6 @@ Function getEmployee:
     Store these information in employee structure
     Store all employee in the array
     
-
     --END--
 
 
@@ -138,7 +132,6 @@ Function searchProgrammer:
     
     IF programmer is not found, call unsignedDefect Function, pass defect structure to it.
     
-
     --END--
     
 
@@ -149,7 +142,6 @@ Function displayAssignemt:
     Checks for status = assigned.
     Defects assigned to programmers to be displayed along with defect description, module name, functional area, filed-on date type, Emp ID and EMP Name.
     
-
     --END--
     
 
@@ -160,7 +152,6 @@ Function unsignedDefect:
     Appends information of defect into a file unassignedDefects.txt
     IF file doesn't exist - create new file with same name
     
-
     --END--
 
 
@@ -173,7 +164,6 @@ Function createEmployeeFile:
     Else
     Create file with filename <empID>_assignemnts.txt and copy defect information.
         
-    
     --END--
     
     
