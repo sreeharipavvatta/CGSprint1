@@ -1,5 +1,5 @@
 F005:Column values in BOM reports are incorrect:aircraft design:Licensing:13/09/2022:open:fatal
 PX01:Licensing is invalid for Unit-PX5:Unit-PX5:Licensing:18/04/2021:open:fatal
-ID01: : : ::open:
+ID01: : : ::open: 
 G101:USA Cliants need some Clarification:Customer support:Manage customers:21/08/2022:open:fatal
 F096:Column values in cliant dashboard are not shown:Aircraft design:Manager:21/08/2022:open:fatal

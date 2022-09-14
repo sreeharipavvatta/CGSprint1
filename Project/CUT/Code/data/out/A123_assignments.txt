@@ -1,0 +1,4 @@
+A123 : Suresh Panchal : F001 : Column values in BOM reports are incorrect : Aircraft design : BOM report : 21/08/2022 : fatal
+A123 : Suresh Panchal : N004 : BOM report columns not alligned properly : Aircraft design : BOM report : 21/08/2022 : niceToHave
+A123 : Suresh Panchal : N001 : BOM report columns not alligned properly : Aircraft design : BOM report : 21/08/2022 : niceToHave
+A123 : Suresh Panchal : K002 : sed quia non numquam eius modi tempora incidunt : reprehenderit : BOM report : 212022 : fatal
