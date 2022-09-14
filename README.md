@@ -14,11 +14,12 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
          4. [Make](Project/CUT/Code/Make/): Contains Makefile.
          5. [Obj](Project/CUT/Code/obj/): Contains compiled object files.
          6. [SRC](Project/CUT/Code/SRC/): Contains source code.
-      2. [ToolsReport](Project/CUT/ToolsReport/)
+      2. [CodeInspectionLog](Project/CUT/CodeInspectionLog/)
+      3. [ToolsReport](Project/CUT/ToolsReport/)
          1. [CUnit](Project/CUT/ToolsReport/CUnit): Contains Unit Testing Report
          2. [Splint](Project/CUT/ToolsReport/Splint/)
          3. [Valgrind](Project/CUT/ToolsReport/Valgrind/)
-      3. [UT&ITReport](Project/CUT/)
+      4. [UT&ITReport](Project/CUT/UT_IT%20Plan%20Reports/)
    2. [Design](Project/DESIGN/): Contains Code & Design Review Checklist Documents and Pseudocodes.
    3. [Plan](Project/Plan/): Contains Minutes of Meetings & Sprint Schedule.
    4. [RTM](project/RTM): Contains Requirement Tracibility Matrix Document.
