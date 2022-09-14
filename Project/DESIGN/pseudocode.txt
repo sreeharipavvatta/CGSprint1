@@ -20,6 +20,7 @@ Input Files -> main.c -> getdefect.c -> assign.c -> Output Files
 ----- Inside main.c file -----
 Function main:
     --START--
+    
     Take location of input files as Command Line arguments.
     Validate Command Line Argumensts
     If insufficient arguments are passed display proper usage
@@ -30,11 +31,14 @@ Function main:
     Pass file location with the thread to getdefect function
 
     Wait for all child threads to join
+    
     --END--
+
 
 ----- Inside getdefect.c file -----
 Function getDefect:
     --START--
+    
     Takes the location of file as input
 	Open the file with a file pointer	
 	if the pointer is NULL
@@ -44,12 +48,14 @@ Function getDefect:
 	if the line returns NULL
 		return as we have reached the end of file
 	else
-		pass the content of the line to checkValidity function
+		pass the content of the line to checkValidity function   
     
     --END--
+    
 
 Function checkValidity:
     --START--
+    
     Takes defect line as argument
     Tokenises the line in separate parts.
     If all required infomation is given then consider it as a valid entry.
@@ -61,8 +67,10 @@ Function checkValidity:
 
     --END--
 
+
 Function InvalidDefect:
     --START--
+    
     Takes Invalid Defect ID and Defect String/Line as Input
 		
 	// Display Defect ID and Unvalible Informations
@@ -73,13 +81,15 @@ Function InvalidDefect:
 		CREATE "invaliddefect.txt"
 		APPEND entire invalid defect line 
 	ELSE 
-		APPEND entire invalid defect line
+		APPEND entire invalid defect line  
     
     --END--
+    
 
 ----- Inside assign.c file -----
 Fucntion assignProgrammer:
     --START--
+    
     Takes array of valid entries as an argument
 
     Declare an data structure to store employee data
@@ -92,9 +102,11 @@ Fucntion assignProgrammer:
     pass array of employee structure and array of valid defect strucutre to it.
 
     --END--
+    
 
 Function getEmployee:
     --START--
+    
     Takes array of employee structure as an argument
     Open input file with employee data using File pointer
     Display error if file can't be opened for any reason
@@ -103,11 +115,12 @@ Function getEmployee:
     Store these information in employee structure
     Store all employee in the array
     
-
     --END--
+
 
 Function searchProgrammer:
     --START--
+    
     Takes array of employee structure and array of valid defect entry structure as argument
     maps programmer to the defect if there functional requrirement is matched
     
@@ -118,40 +131,39 @@ Function searchProgrammer:
     Call createEmployeeFIle Function, pass Employee and defect sturcuture.
     
     IF programmer is not found, call unsignedDefect Function, pass defect structure to it.
-
-
-
-    --END--
-
-Function changeStatus:
-    --START--
-
-
     
-
     --END--
+    
 
 Function displayAssignemt:
     --START--
+    
     Takes array of valid defects entry as argument
     Checks for status = assigned.
     Defects assigned to programmers to be displayed along with defect description, module name, functional area, filed-on date type, Emp ID and EMP Name.
     
-
     --END--
+    
 
 Function unsignedDefect:
     --START--
+    
     Takes defect structure as argument.
     Appends information of defect into a file unassignedDefects.txt
     IF file doesn't exist - create new file with same name
     
-
     --END--
 
+
 Function createEmployeeFile:
+    --START--
+    
     Takes structure of Employee and Defect 
     If employee file is exists, append defect information that has been assigned 
     in that file
     Else
     Create file with filename <empID>_assignemnts.txt and copy defect information.
+        
+    --END--
+    
+    

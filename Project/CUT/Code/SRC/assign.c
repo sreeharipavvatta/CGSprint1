@@ -86,5 +86,5 @@ void assignEmployee(defect *arr[], int vdc)
             searchProgrammer(arr[i], emp_arr, n_emp);
         }
     }
-    // printf("\n--- Total Open Defects %d ---\n", odc);
+    
 }

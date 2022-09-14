@@ -169,8 +169,7 @@ void *getDefect(void *file)
         }
     }
     fclose(fpr);
-    // printf("\n\n--- Total Valid Defects: %d ---\n", vdc);
-    // displayvalidDefects(defect_arr, vdc);
+    
     assignEmployee(defect_arr, vdc);
 
     for (int i = 0; i < vdc; i++)
