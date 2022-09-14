@@ -1,0 +1,125 @@
+--- Total files in queue: 3 ---
+
+--- Total Employee: 7 ---
+
+ID: A123 Name: Suresh Panchal
+ID: D012 Name: J K Laxmi
+ID: C015 Name: Sandeep Khaire
+ID: D002 Name: Mahesh Katkar
+ID: B011 Name: Sreehari Bhaskar
+ID: C014 Name: Aman Ps
+ID: XY02 Name: Krishna Telar
+--- Creating Thread for file 1: ../data/defect.txt ---
+
+--- Creating Thread for file 2: ../data/defect2.txt ---
+
+--- Creating Thread for file 3: ../data/defect3.txt ---
+
+--- Processing file: ../data/defect.txt
+Defect ID: O001 contains insufficient information.
+--- Processing file: ../data/defect2.txt
+Defect ID: M001 contains insufficient information.
+--- Processing file: ../data/defect3.txt
+Defect ID: ID01 contains insufficient information.
+
+--- Searching Programmer for defect Id: F001 ---
+
+--- Searching Programmer for defect Id: N004 ---
+
+--- Searching Programmer for defect Id: F005 ---
+Defect Id: F001
+Status: Assigned
+Module Name: Aircraft design
+Functional Area: BOM report
+Description: Column values in BOM reports are incorrect
+
+Has been assigned to:-
+Employee Id: A123
+Employee Name: Suresh Panchal
+
+
+--- Searching Programmer for defect Id: N001 ---
+Defect Id: N004
+Status: Assigned
+Module Name: Aircraft design
+Functional Area: BOM report
+Description: BOM report columns not alligned properly
+
+Has been assigned to:-
+Employee Id: A123
+Employee Name: Suresh Panchal
+
+
+--- Searching Programmer for defect Id: F008 ---
+--- Programmer not found for defect Id: F008 ---
+Defect Id: F005
+Status: Assigned
+Module Name: aircraft design
+Functional Area: Licensing
+Description: Column values in BOM reports are incorrect
+
+Has been assigned to:-
+Employee Id: D002
+Employee Name: Mahesh Katkar
+
+
+--- Searching Programmer for defect Id: PX01 ---
+Defect Id: N001
+Status: Assigned
+Module Name: Aircraft design
+Functional Area: BOM report
+Description: BOM report columns not alligned properly
+
+Has been assigned to:-
+Employee Id: A123
+Employee Name: Suresh Panchal
+
+
+--- Searching Programmer for defect Id: F003 ---
+
+--- Searching Programmer for defect Id: K002 ---
+Defect Id: PX01
+Status: Assigned
+Module Name: Unit-PX5
+Functional Area: Licensing
+Description: Licensing is invalid for Unit-PX5
+
+Has been assigned to:-
+Employee Id: D002
+Employee Name: Mahesh Katkar
+
+
+--- Searching Programmer for defect Id: G101 ---
+Defect Id: F003
+Status: Assigned
+Module Name: Aircraft design
+Functional Area: Manage customers
+Description: Column values in cliant dashboard are not shown
+
+Has been assigned to:-
+Employee Id: C015
+Employee Name: Sandeep Khaire
+
+Defect Id: K002
+Status: Assigned
+Module Name: reprehenderit
+Functional Area: BOM report
+Description: sed quia non numquam eius modi tempora incidunt
+
+Has been assigned to:-
+Employee Id: A123
+Employee Name: Suresh Panchal
+
+Defect Id: G101
+Status: Assigned
+Module Name: Customer support
+Functional Area: Manage customers
+Description: USA Cliants need some Clarification
+
+Has been assigned to:-
+Employee Id: C015
+Employee Name: Sandeep Khaire
+
+
+--- Searching Programmer for defect Id: F096 ---
+--- Programmer not found for defect Id: F096 ---

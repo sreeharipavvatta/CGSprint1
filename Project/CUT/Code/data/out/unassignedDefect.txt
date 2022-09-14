@@ -1,0 +1,2 @@
+F008 : Nemo enim ipsam voluptatem quia voluptas : Aircraft design : Control Area : 21/08/2022 : open : fatal
+F096 : Column values in cliant dashboard are not shown : Aircraft design : Manager : 21/08/2022 : open : fatal
