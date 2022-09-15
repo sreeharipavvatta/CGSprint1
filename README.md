@@ -17,8 +17,8 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
       2. [CodeInspectionLog](Project/CUT/CodeInspectionLog/)
       3. [ToolsReport](Project/CUT/ToolsReport/)
          1. [CUnit](Project/CUT/ToolsReport/CUnit): Contains Unit Testing Report
-         2. [Splint](Project/CUT/ToolsReport/Splint/)
-         3. [Valgrind](Project/CUT/ToolsReport/Valgrind/)
+         2. [Splint](Project/CUT/ToolsReport/Splint/): Contains Splint Test Report
+         3. [Valgrind](Project/CUT/ToolsReport/Valgrind/): Contains Valgrind Test Report
       4. [UT&ITReport](Project/CUT/UT_IT%20Plan%20Reports/)
    2. [Design](Project/DESIGN/): Contains Code & Design Review Checklist Documents and Pseudocodes.
    3. [Plan](Project/Plan/): Contains Minutes of Meetings & Sprint Schedule.
@@ -28,7 +28,19 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
 2. [README](README.md): Introductory file.
 3. [Checklist](checklist.md): Contains checklist of entire project.
 
+## Input Files
+### Defect File Format
+```
+Defect_ID:Description:Module_Name:Functional_Area:Filed_On_Date:Status:Type
+```
+### Employee File Format
+```
+EmpID:Emp_Name:Business_Unit:Expertise:Designation
+```
+## Acknowledgement
+This project is part of Capgemini Post-Onboarding Freshers Training.
 
+*Batch: E2E-Manipal-Systems C CPP Linux Programming PT Aug 4th Batch2*
 ## Contributors:
 - [Aman Bhaskar](https://github.com/amanbh2)
 - [Karan Nareshbhai Telar](https://github.com/telarKaran)
