@@ -22,8 +22,8 @@ Read complete [SRS](Project/SRS/SRS_DefectProgrammer.pdf) Document here.
       4. [UT&ITReport](Project/CUT/UT_IT%20Plan%20Reports/)
    2. [Design](Project/DESIGN/): Contains Code & Design Review Checklist Documents and Pseudocodes.
    3. [Plan](Project/Plan/): Contains Minutes of Meetings & Sprint Schedule.
-   4. [RTM](project/RTM/): Contains Requirement Tracibility Matrix Document.
-   5. [SRS](project/SRS/): Contains our SRS {Software Requirement Specification} Document.
+   4. [RTM](Project/RTM/): Contains Requirement Tracibility Matrix Document.
+   5. [SRS](Project/SRS/): Contains our SRS {Software Requirement Specification} Document.
    6. [Storyboard](Project/Storyboard/)
 2. [README](README.md): Introductory file.
 3. [Checklist](checklist.md): Contains checklist of entire project.
